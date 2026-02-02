@@ -161,6 +161,7 @@ view: +manufacturing_agent_logs {
     hidden: no
     label: "Total completion token"
     group_label: "Token"
+    html: {{ rendered_value }} completion token used ;;
     type: sum
     sql: ${completion_token} ;;
   }
@@ -228,6 +229,34 @@ view: +manufacturing_agent_logs {
     hidden: no
     type: number
     sql: TIMESTAMP_DIFF(MAX(${timestamp_raw}),MIN(${timestamp_raw}), SECOND) ;;
+  }
+
+  measure: execute_sql_count {
+    hidden: no
+    group_label: "Tool count"
+    type: count
+    filters: [tool_name: "execute_sql"]
+  }
+
+  measure: get_table_info_count {
+    hidden: no
+    group_label: "Tool count"
+    type: count
+    filters: [tool_name: "get_table_info"]
+  }
+
+  measure: list_table_ids_count {
+    hidden: no
+    group_label: "Tool count"
+    type: count
+    filters: [tool_name: "list_table_ids"]
+  }
+
+  measure: search_places {
+    hidden: no
+    group_label: "Tool count"
+    type: count
+    filters: [tool_name: "search_places"]
   }
 
   # measure: average_turns_session {
